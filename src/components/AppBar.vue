@@ -1,5 +1,8 @@
 <template>
-  <v-app-bar app dark>
-    <v-toolbar-title>Hana Dev</v-toolbar-title>
+  <v-app-bar fixed flat dark color="transparent">
+    <v-toolbar-title>
+      <b>Hana</b>
+      Dev
+    </v-toolbar-title>
   </v-app-bar>
 </template>
