@@ -1,0 +1,47 @@
+name: Main
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Use Node.js
+        uses: actions/setup-node@main
+
+      - run: yarn
+
+      - run: yarn lint
+
+  CD:
+    needs: CI
+    if: ${{ !github.head_ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Use Node.js
+        uses: actions/setup-node@main
+
+      - run: yarn
+
+      - run: yarn build
+
+      - working-directory: dist
+        run: |
+          git init
+          cp index.html 404.html
+          git add -A
+          git config --global user.email '${{ secrets.email }}'
+          git config --global user.name '${{ secrets.name }}'
+          git commit -m 'init'
+          git push -f https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }} HEAD:dist
