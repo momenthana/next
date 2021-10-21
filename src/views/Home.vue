@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-main>
     <v-sheet height="300" color="#7f00ff">
       <AppBar />
     </v-sheet>
-  </div>
+  </v-main>
 </template>
 
 <script lang="ts">
