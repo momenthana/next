@@ -1,8 +1,8 @@
 <template>
   <v-main>
-    <v-navigation-drawer app dark floating permanent>
+    <v-navigation-drawer app floating permanent>
       <v-list nav class="ma-4">
-        <v-list-item-group active-class="deep-purple accent-4">
+        <v-list-item-group active-class="deep-purple accent-2" color="white">
           <v-list-item v-for="item in list" :key="item.title" :to="item.link">
             <v-list-item-content>
               <v-list-item-title class="mx-2">
