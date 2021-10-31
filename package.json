@@ -1,0 +1,37 @@
+{
+  "name": "xdev.hana.ooo",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/momenthana/xdev.hana.ooo.git",
+  "author": "Hana <momenthana@kakao.com>",
+  "scripts": {
+    "start": "babel-node -r dotenv/config src/index",
+    "dev": "nodemon --exec babel-node -r dotenv/config src/index -e js,gql dotenv_config_path=.env.dev"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@graphql-tools/load-files": "^6.2.5",
+    "@graphql-tools/merge": "^6.2.7",
+    "@koa/cors": "^3.1.0",
+    "apollo-server-koa": "^2.21.0",
+    "babel-plugin-import-graphql": "^2.8.1",
+    "babel-plugin-root-import": "^6.6.0",
+    "base64url": "^3.0.1",
+    "bcrypt": "^5.0.1",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.5.0",
+    "jose": "^3.14.0",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mongoose": "^5.13.2",
+    "nodemailer": "^6.6.3",
+    "uuid-mongodb": "^2.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
