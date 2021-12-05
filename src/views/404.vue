@@ -22,6 +22,8 @@
 import { defineComponent } from "@vue/composition-api"
 
 export default defineComponent({
+  name: "404",
+
   setup(_, { root }) {
     const home = () => {
       root.$router.push("/")

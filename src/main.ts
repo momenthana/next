@@ -5,6 +5,7 @@ import router from "./router"
 import store from "./store"
 import vuetify from "./plugins/vuetify"
 import VueCompositionAPI from "@vue/composition-api"
+import apolloProvider from "./vue-apollo"
 
 Vue.use(VueCompositionAPI)
 
@@ -14,5 +15,6 @@ new Vue({
   router,
   store,
   vuetify,
+  apolloProvider,
   render: (h) => h(App),
 }).$mount("#app")

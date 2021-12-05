@@ -15,6 +15,11 @@ const routes: Array<RouteConfig> = [
     component: () => import("@/views/Apps.vue"),
   },
   {
+    path: "/oauth",
+    name: "OAuth",
+    component: () => import("@/views/OAuth.vue"),
+  },
+  {
     path: "*",
     name: "404",
     component: () => import("@/views/404.vue"),

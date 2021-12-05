@@ -24,6 +24,8 @@ module.exports = {
         semi: false,
       },
     ],
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
   },
   overrides: [
     {
