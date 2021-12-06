@@ -24,7 +24,7 @@ export default defineComponent({
     }
 
     onBeforeMount(() => {
-      Hana.init({ clientId: "test" })
+      Hana.init({ clientId: process.env.CLIEND_ID })
     })
 
     return {
