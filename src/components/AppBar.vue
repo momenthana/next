@@ -24,7 +24,7 @@ export default defineComponent({
     }
 
     onBeforeMount(() => {
-      Hana.init({ clientId: process.env.CLIEND_ID })
+      Hana.init({ clientId: process.env.VUE_APP_CLIENT_ID })
     })
 
     return {
