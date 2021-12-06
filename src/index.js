@@ -8,7 +8,7 @@ import https from "https"
 import { env } from "process"
 import mongoose from "mongoose"
 import { ApolloServer } from "apollo-server-koa"
-import { jwtVerify } from "jose/jwt/verify"
+import Hana from "hana.js"
 
 import typeDefs from "@/graphql/typeDefs"
 import resolvers from "@/graphql/resolvers"
@@ -17,21 +17,19 @@ const app = new Koa()
 const router = new Router()
 const apollo = new ApolloServer({
   context: async ({ ctx }) => {
-    if (!ctx.req.headers.authorization) return { ctx }
+    try {
+      if (!ctx.req.headers.authorization) return { ctx }
 
-    const authorization = ctx.req.headers.authorization.split(" ")
+      const authorization = ctx.req.headers.authorization.split(" ")
 
-    if (authorization[0] != "Bearer") return { ctx }
+      if (authorization[0] != "Bearer") return { ctx }
 
-    const { payload } = await jwtVerify(
-      authorization[1],
-      accessTokenPublicKey,
-      {
-        issuer: "auth.hana.ooo",
-      }
-    )
+      const payload = Hana.Auth.tokenInfo({ accessToken: authorization[1] })
 
-    return { ctx, payload }
+      return { ctx, payload }
+    } catch {
+      return { ctx }
+    }
   },
   typeDefs,
   resolvers,
@@ -51,7 +49,7 @@ apollo.applyMiddleware({
 })
 
 mongoose.connect(
-  `mongodb+srv://${env.MONGO_DB_USER}:${env.MONGO_DB_PASS}@${env.MONGO_DB_HOST}/auth`,
+  `mongodb+srv://${env.MONGO_DB_USER}:${env.MONGO_DB_PASS}@${env.MONGO_DB_HOST}/dev`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
