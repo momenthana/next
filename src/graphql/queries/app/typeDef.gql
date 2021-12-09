@@ -1,10 +1,10 @@
 extend type Query {
-  app(input: AppInput!): App!
+  app(input: AppInput!): [App]!
 }
 
 input AppInput {
   "클라이언트 ID"
-  clientId: String!
+  clientId: String
 }
 
 type App {

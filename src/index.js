@@ -24,7 +24,9 @@ const apollo = new ApolloServer({
 
       if (authorization[0] != "Bearer") return { ctx }
 
-      const payload = Hana.Auth.tokenInfo({ accessToken: authorization[1] })
+      const payload = await Hana.Auth.tokenInfo({
+        accessToken: authorization[1],
+      })
 
       return { ctx, payload }
     } catch {

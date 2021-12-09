@@ -8,6 +8,7 @@ export const token = async (_, args) => {
     })
 
     const token = await Hana.Auth.token({
+      grantType: "authorization_code",
       code: args.input.code,
       redirectUri: env.REDIRECT_URI,
       clientSecret: env.CLIENT_SECRET ? env.CLIENT_SECRET : undefined,

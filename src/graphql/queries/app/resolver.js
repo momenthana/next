@@ -6,8 +6,8 @@ import App from "@/models/app"
 export const app = async (_, args, { payload }) => {
   if (!payload) throw new AuthenticationError()
 
-  const app = await App.findOne({
-    clientId: MUUID.from(args.input.clientId),
+  const app = await App.find({
+    id: MUUID.from(payload.sub),
   })
 
   return app

@@ -3,6 +3,10 @@ import MUUID from "uuid-mongodb"
 
 const App = new mongoose.Schema(
   {
+    id: {
+      type: Object,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
