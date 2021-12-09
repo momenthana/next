@@ -1,0 +1,8 @@
+query app($input: AppInput!) {
+  app(input: $input) {
+    name
+    desc
+    requiredScope
+    optionalScope
+  }
+}

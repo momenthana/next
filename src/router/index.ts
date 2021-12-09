@@ -3,6 +3,12 @@ import VueRouter, { RouteConfig } from "vue-router"
 
 Vue.use(VueRouter)
 
+const beforeEnter = async (to: any, from: any, next: any) => {
+  if (!localStorage.getItem("access_token")) return next("/")
+
+  next()
+}
+
 const routes: Array<RouteConfig> = [
   {
     path: "/",
@@ -13,6 +19,7 @@ const routes: Array<RouteConfig> = [
     path: "/apps",
     name: "Apps",
     component: () => import("@/views/Apps.vue"),
+    beforeEnter,
   },
   {
     path: "/oauth",

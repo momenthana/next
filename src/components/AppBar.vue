@@ -19,7 +19,7 @@ export default defineComponent({
   setup() {
     const signIn = () => {
       Hana.Auth.authorize({
-        redirectUri: "https://dev.hana.ooo/oauth",
+        redirectUri: process.env.VUE_APP_REDIRECT_URI,
       })
     }
 

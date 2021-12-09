@@ -40,19 +40,34 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from "@vue/composition-api"
+import {
+  defineComponent,
+  onBeforeMount,
+  reactive,
+  toRefs,
+} from "@vue/composition-api"
 import Devs from "@/components/Devs.vue"
+import app from "@/graphql/queries/app.gql"
 
 export default defineComponent({
   components: { Devs },
 
-  setup() {
+  setup(_, { root }) {
     const state = reactive({
-      apps: [
-        {
-          name: "하나",
+      apps: [],
+    })
+
+    onBeforeMount(async () => {
+      const { data } = await root.$apollo.mutate({
+        mutation: app,
+        variables: {
+          input: {
+            id: root.$route.query.code,
+          },
         },
-      ],
+      })
+
+      state.apps = data.app
     })
 
     return {

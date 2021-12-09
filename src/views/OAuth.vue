@@ -17,7 +17,7 @@ export default defineComponent({
     onBeforeMount(async () => {
       if (root.$route.query.code) {
         try {
-          const data = await root.$apollo.mutate({
+          const { data } = await root.$apollo.mutate({
             mutation: token,
             variables: {
               input: {
@@ -25,6 +25,9 @@ export default defineComponent({
               },
             },
           })
+
+          localStorage.setItem("access_token", data.token.accessToken)
+          localStorage.setItem("id_token", data.token.idToken)
 
           root.$router.push("/apps")
         } catch {
