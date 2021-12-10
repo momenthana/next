@@ -22,6 +22,12 @@ const routes: Array<RouteConfig> = [
     beforeEnter,
   },
   {
+    path: "/apps/:clientId",
+    name: "App",
+    component: () => import("@/views/App.vue"),
+    beforeEnter,
+  },
+  {
     path: "/oauth",
     name: "OAuth",
     component: () => import("@/views/OAuth.vue"),

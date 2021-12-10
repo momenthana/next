@@ -45,7 +45,7 @@ export default defineComponent({
     })
 
     const create = async () => {
-      const { data } = await root.$apollo.mutate({
+      await root.$apollo.mutate({
         mutation: createApp,
         variables: {
           input: {

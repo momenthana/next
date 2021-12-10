@@ -14,17 +14,20 @@
     <v-card-text>
       <v-row>
         <v-col cols="6" sm="4" md="3" lg="2" v-for="(app, i) in apps" :key="i">
-          <v-card flat color="orange">
-            <v-img aspect-ratio="1" :src="app.src" />
+          <v-card flat :to="`/apps/${app.clientId}`">
+            <v-card flat color="orange">
+              <v-img aspect-ratio="1" :src="app.src" />
+            </v-card>
+
+            <v-card-actions>
+              <span
+                class="mx-auto font-weight-bold text-no-wrap"
+                style="overflow: hidden; text-overflow: ellipsis"
+              >
+                {{ app.name }}
+              </span>
+            </v-card-actions>
           </v-card>
-          <v-card-actions>
-            <span
-              class="mx-auto font-weight-bold text-no-wrap"
-              style="overflow: hidden; text-overflow: ellipsis"
-            >
-              {{ app.name }}
-            </span>
-          </v-card-actions>
         </v-col>
       </v-row>
     </v-card-text>
