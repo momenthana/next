@@ -6,9 +6,13 @@ import App from "@/models/app"
 export const app = async (_, args, { payload }) => {
   if (!payload) throw new AuthenticationError()
 
-  const app = await App.find({
+  const apps = await App.find({
     id: MUUID.from(payload.sub),
   })
 
-  return app
+  apps.forEach((app) => {
+    app.clientId = MUUID.from(app.clientId).toString()
+  })
+
+  return apps
 }

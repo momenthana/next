@@ -1,6 +1,6 @@
 extend type Mutation {
   "앱 추가하기"
-  createApp(input: CreateAppInput!): Boolean!
+  createApp(input: CreateAppInput!): CreateApp!
 }
 
 input CreateAppInput {
@@ -8,4 +8,11 @@ input CreateAppInput {
   name: String!
   "설명"
   desc: String
+}
+
+type CreateApp {
+  "이름"
+  name: String!
+  "클라이언트 ID"
+  clientId: String!
 }
