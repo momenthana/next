@@ -1,7 +1,8 @@
-query app($input: AppInput!) {
+query app($input: AppInput) {
   app(input: $input) {
     name
     desc
+    clientId
     requiredScope
     optionalScope
   }

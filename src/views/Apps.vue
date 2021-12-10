@@ -3,15 +3,7 @@
     <v-card-title>
       <h1 class="display-1">애플리케이션</h1>
       <v-spacer />
-      <v-btn
-        color="deep-purple accent-2"
-        class="mx-4"
-        height="40"
-        depressed
-        dark
-      >
-        추가하기
-      </v-btn>
+      <CreateApp @update="getApps" />
       <v-avatar color="orange" size="40" />
     </v-card-title>
     <v-card-text>
@@ -47,31 +39,32 @@ import {
   toRefs,
 } from "@vue/composition-api"
 import Devs from "@/components/Devs.vue"
+import CreateApp from "@/components/dialog/CreateApp.vue"
 import app from "@/graphql/queries/app.gql"
 
 export default defineComponent({
-  components: { Devs },
+  components: { Devs, CreateApp },
 
   setup(_, { root }) {
     const state = reactive({
       apps: [],
     })
 
-    onBeforeMount(async () => {
+    const getApps = async () => {
       const { data } = await root.$apollo.mutate({
         mutation: app,
-        variables: {
-          input: {
-            id: root.$route.query.code,
-          },
-        },
       })
 
       state.apps = data.app
+    }
+
+    onBeforeMount(async () => {
+      getApps()
     })
 
     return {
       ...toRefs(state),
+      getApps,
     }
   },
 })
