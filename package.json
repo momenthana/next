@@ -23,7 +23,7 @@
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
-    "hana.js": "^0.0.9",
+    "hana.js": "^0.0.10",
     "jose": "^4.3.7",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
