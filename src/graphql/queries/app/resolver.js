@@ -7,15 +7,15 @@ export const app = async (_, args, { payload }) => {
   if (!payload) throw new AuthenticationError()
 
   const filter = {
-    id: MUUID.from(payload.sub),
+    userId: MUUID.from(payload.sub),
   }
 
-  if (args.input?.clientId) filter.clientId = MUUID.from(args.input?.clientId)
+  if (args.input?.clientId) filter.id = MUUID.from(args.input?.clientId)
 
   const apps = await App.find(filter)
 
   apps.forEach((app) => {
-    app.clientId = MUUID.from(app.clientId).toString()
+    app.clientId = MUUID.from(app.id).toString()
   })
 
   return apps

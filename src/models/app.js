@@ -3,7 +3,7 @@ import MUUID from "uuid-mongodb"
 
 const App = new mongoose.Schema(
   {
-    id: {
+    userId: {
       type: Object,
       required: true,
     },
@@ -14,7 +14,7 @@ const App = new mongoose.Schema(
     desc: {
       type: String,
     },
-    clientId: {
+    id: {
       type: Object,
       default: MUUID.v4,
       required: true,

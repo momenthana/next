@@ -6,9 +6,9 @@ import App from "@/models/app"
 export const createApp = async (_, args, { payload }) => {
   if (!payload) throw new AuthenticationError()
 
-  const app = await App.create({ ...args.input, id: MUUID.from(payload.sub) })
+  const app = await App.create({ ...args.input, userId: MUUID.from(payload.sub) })
 
-  app.clientId = MUUID.from(app.clientId).toString()
+  app.clientId = MUUID.from(app.id).toString()
 
   return app
 }
