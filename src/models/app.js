@@ -1,6 +1,10 @@
 import mongoose from "mongoose"
 import MUUID from "uuid-mongodb"
 
+import createConnection from "@/createConnection"
+
+const dev = createConnection("dev")
+
 const App = new mongoose.Schema(
   {
     userId: {
@@ -42,4 +46,4 @@ const App = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model("app", App)
+module.exports = dev.model("app", App)

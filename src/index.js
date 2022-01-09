@@ -1,4 +1,3 @@
-import fs from "fs"
 import Koa from "koa"
 import cors from "@koa/cors"
 import Router from "koa-router"
@@ -6,12 +5,12 @@ import bodyParser from "koa-bodyparser"
 import http from "http"
 import https from "https"
 import { env } from "process"
-import mongoose from "mongoose"
 import { ApolloServer } from "apollo-server-koa"
 import Hana from "hana.js"
 
 import typeDefs from "@/graphql/typeDefs"
 import resolvers from "@/graphql/resolvers"
+import Cert from "@/models/cert"
 
 const app = new Koa()
 const router = new Router()
@@ -50,32 +49,25 @@ apollo.applyMiddleware({
   cors: { origin: env.ORIGIN || "*" },
 })
 
-mongoose.connect(
-  `mongodb+srv://${env.MONGO_DB_USER}:${env.MONGO_DB_PASS}@${env.MONGO_DB_HOST}/dev`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+Cert.findOne({
+  name: "dev",
+}).lean().then((res) => {
+  if (res.KEY || res.CERT) {
+    const options = {
+      key: res.KEY,
+      cert: res.CERT,
+    }
+  
+    https.createServer(options, app.callback()).listen(env.HTTPS || 443, () => {
+      console.log(
+        `🚀  Server ready at https://localhost:${env.HTTPS || 443}/graphql`
+      )
+    })
+  } else {
+    http.createServer(app.callback()).listen(env.HTTP || 80, () => {
+      console.log(
+        `🚀  Server ready at http://localhost:${env.HTTP || 80}/graphql`
+      )
+    })
   }
-)
-
-if (env.CA || env.KEY || env.CERT) {
-  const options = {
-    ca: env.CA ? fs.readFileSync("env/" + env.CA) : undefined,
-    key: env.KEY ? fs.readFileSync("env/" + env.KEY) : undefined,
-    cert: env.CERT ? fs.readFileSync("env/" + env.CERT) : undefined,
-  }
-
-  https.createServer(options, app.callback()).listen(env.HTTPS || 443, () => {
-    console.log(
-      `🚀  Server ready at https://localhost:${env.HTTPS || 443}/graphql`
-    )
-  })
-} else {
-  http.createServer(app.callback()).listen(env.HTTP || 80, () => {
-    console.log(
-      `🚀  Server ready at http://localhost:${env.HTTP || 80}/graphql`
-    )
-  })
-}
+})
