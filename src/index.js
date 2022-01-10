@@ -57,17 +57,17 @@ Cert.findOne({
       key: res.KEY,
       cert: res.CERT,
     }
-  
+
     https.createServer(options, app.callback()).listen(env.HTTPS || 443, () => {
       console.log(
         `🚀  Server ready at https://localhost:${env.HTTPS || 443}/graphql`
       )
     })
-  } else {
-    http.createServer(app.callback()).listen(env.HTTP || 80, () => {
-      console.log(
-        `🚀  Server ready at http://localhost:${env.HTTP || 80}/graphql`
-      )
-    })
   }
+
+  http.createServer(app.callback()).listen(env.HTTP || 80, () => {
+    console.log(
+      `🚀  Server ready at http://localhost:${env.HTTP || 80}/graphql`
+    )
+  })
 })
