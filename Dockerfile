@@ -1,9 +1,9 @@
-FROM node:16
+FROM node:alpine
 
 WORKDIR /ooo/hana/xdev
 
 COPY . .
 
-RUN npm i --production
+RUN yarn
 
-CMD npm start
+CMD yarn start
