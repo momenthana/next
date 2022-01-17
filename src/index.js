@@ -1,6 +1,6 @@
-import { init } from "@/lib/alice";
-import { start } from "@/server";
+import { init } from '@/lib/alice'
+import { start } from '@/server'
 
 init().then(() => {
-  start();
-});
+  start()
+})

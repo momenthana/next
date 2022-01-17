@@ -1,49 +1,49 @@
-import mongoose from "mongoose"
-import MUUID from "uuid-mongodb"
+import mongoose from 'mongoose'
+import MUUID from 'uuid-mongodb'
 
-import createConnection from "@/createConnection"
+import createConnection from '@/createConnection'
 
-const dev = createConnection("dev")
+const dev = createConnection('dev')
 
 const App = new mongoose.Schema(
   {
     userId: {
       type: Object,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
+      required: true
     },
     desc: {
-      type: String,
+      type: String
     },
     id: {
       type: Object,
       default: MUUID.v4,
       required: true,
-      unique: true,
+      unique: true
     },
     clientSecret: {
       type: Object,
       default: MUUID.v4,
       required: true,
-      unique: true,
+      unique: true
     },
     requiredScope: {
-      type: Array,
+      type: Array
     },
     optionalScope: {
-      type: Array,
+      type: Array
     },
     redirectUri: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   {
     timestamps: true,
-    versionKey: false,
+    versionKey: false
   }
 )
 
-module.exports = dev.model("app", App)
+module.exports = dev.model('app', App)

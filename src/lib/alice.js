@@ -1,11 +1,11 @@
-import { env } from "process";
+import { env } from 'process'
 
-import Env from "@/models/env";
+import Env from '@/models/env'
 
 export const init = async () => {
   const data = await Env.findOne({
-    NAME: env.NAME,
-  }).lean();
+    NAME: env.NAME
+  }).lean()
 
-  Object.assign(env, data);
-};
+  Object.assign(env, data)
+}

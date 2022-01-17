@@ -1,13 +1,13 @@
-import { AuthenticationError } from "apollo-server-koa"
-import MUUID from "uuid-mongodb"
+import { AuthenticationError } from 'apollo-server-koa'
+import MUUID from 'uuid-mongodb'
 
-import App from "@/models/app"
+import App from '@/models/app'
 
 export const app = async (_, args, { payload }) => {
   if (!payload) throw new AuthenticationError()
 
   const filter = {
-    userId: MUUID.from(payload.sub),
+    userId: MUUID.from(payload.sub)
   }
 
   if (args.input?.clientId) filter.id = MUUID.from(args.input?.clientId)
