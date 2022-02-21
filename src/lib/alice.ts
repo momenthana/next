@@ -2,7 +2,7 @@ import { env } from 'process'
 
 import Env from '@/models/env'
 
-export const init = async () => {
+export const init = async (): Promise<void> => {
   const data = await Env.aggregate([
     { $match: { NAME: env.NAME } },
     {

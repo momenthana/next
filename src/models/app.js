@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import MUUID from 'uuid-mongodb'
 
-import createConnection from '@/createConnection'
+import createConnection from '@/lib/createConnection'
 
 const dev = createConnection('dev')
 
