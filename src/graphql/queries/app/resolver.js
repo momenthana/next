@@ -1,4 +1,4 @@
-import { AuthenticationError } from 'apollo-server-koa'
+import { AuthenticationError } from 'apollo-server-core'
 import MUUID from 'uuid-mongodb'
 
 import App from '@/models/app'
