@@ -66,7 +66,6 @@ export const startApolloServer = async (
   });
 
   await server.start();
-  app.register(import("@fastify/cookie"));
   app.register(
     server.createHandler({
       cors: {
@@ -77,6 +76,14 @@ export const startApolloServer = async (
       },
     })
   );
+  app.register(import("@fastify/cookie"));
+  app.register(import("@fastify/cors"), {
+    origin: (_origin: any, cb: any) => {
+      cb(null, true);
+    },
+    credentials: true,
+  });
+
   await app.listen(env.PORT ?? 4000, env.ADDR);
   console.log(
     `🚀 Server ready at https://localhost:${env.PORT ?? 4000}${

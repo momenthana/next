@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fastify/cookie": "^6.0.0",
+    "@fastify/cors": "7.0.0",
     "@graphql-tools/load-files": "^6.2.5",
     "@graphql-tools/merge": "^6.2.7",
     "apollo-server-core": "^3.9.0",

@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/cli", "npm:16.2.1"],\
             ["@commitlint/config-conventional", "npm:16.2.1"],\
             ["@fastify/cookie", "npm:6.0.0"],\
+            ["@fastify/cors", "npm:7.0.0"],\
             ["@graphql-tools/load-files", "virtual:bbfbca699752b39b78ce5b14507e2789c5a5c5d2ee73288ac25a938cd94beeac6cc98c195a873d97cb58e082b2e681d815d7c9945fde46b1d98c674465f819ae#npm:6.5.3"],\
             ["@graphql-tools/merge", "virtual:bbfbca699752b39b78ce5b14507e2789c5a5c5d2ee73288ac25a938cd94beeac6cc98c195a873d97cb58e082b2e681d815d7c9945fde46b1d98c674465f819ae#npm:6.2.17"],\
             ["@types/node", "npm:18.0.0"],\
@@ -6994,6 +6995,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/cli", "npm:16.2.1"],\
             ["@commitlint/config-conventional", "npm:16.2.1"],\
             ["@fastify/cookie", "npm:6.0.0"],\
+            ["@fastify/cors", "npm:7.0.0"],\
             ["@graphql-tools/load-files", "virtual:bbfbca699752b39b78ce5b14507e2789c5a5c5d2ee73288ac25a938cd94beeac6cc98c195a873d97cb58e082b2e681d815d7c9945fde46b1d98c674465f819ae#npm:6.5.3"],\
             ["@graphql-tools/merge", "virtual:bbfbca699752b39b78ce5b14507e2789c5a5c5d2ee73288ac25a938cd94beeac6cc98c195a873d97cb58e082b2e681d815d7c9945fde46b1d98c674465f819ae#npm:6.2.17"],\
             ["@types/node", "npm:18.0.0"],\
