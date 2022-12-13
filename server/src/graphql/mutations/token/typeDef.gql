@@ -1,0 +1,17 @@
+extend type Mutation {
+  "액세스 토큰 및 ID 토큰에 대한 code 교환"
+  token(input: TokenInput!): Token!
+}
+
+input TokenInput {
+  "인증 코드"
+  code: String!
+}
+
+type Token {
+  accessToken: String
+  expiresIn: Int
+  idToken: String
+  scope: String
+  tokenType: String
+}
