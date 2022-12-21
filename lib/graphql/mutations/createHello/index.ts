@@ -10,9 +10,7 @@ export const createHello = async (
         extensions: { code: "UNAUTHENTICATED" },
       });
 
-    console.log(input);
-
-    return input.hello;
+    return input;
   } catch (err) {
     console.error(err);
   }
