@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graphql-let
+.cache
+*.gql.d.ts
+__generated__
+__snapshots__

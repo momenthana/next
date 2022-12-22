@@ -11,6 +11,12 @@ const nextConfig = {
       use: [options.defaultLoaders.babel, { loader: "graphql-tag/loader" }],
     });
 
+    config.module.rules.push({
+      test: /\.gql$/,
+      exclude: /node_modules/,
+      use: [options.defaultLoaders.babel, { loader: "graphql-let/loader" }],
+    });
+
     return config;
   },
 };
