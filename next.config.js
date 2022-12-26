@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  assetPrefix: "/next",
   webpack(config, options) {
     config.experiments.topLevelAwait = true;
 
