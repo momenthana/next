@@ -1,6 +1,6 @@
-import styles from "@/styles/Home.module.css";
-import { NextPage } from "next";
-import Link from "next/link";
+import styles from '@/styles/Home.module.css'
+import { NextPage } from 'next'
+import Link from 'next/link'
 
 const About: NextPage = () => {
   return (
@@ -12,7 +12,7 @@ const About: NextPage = () => {
         </p>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
