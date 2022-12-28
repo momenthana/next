@@ -1,13 +1,15 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client/core";
 import { from } from "@apollo/client/link/core";
 import { onError } from "@apollo/client/link/error";
-import { HttpLink } from "@apollo/client/link/http";
+import { BatchHttpLink } from "@apollo/client/link/batch-http";
 import fetch from "cross-fetch";
 import merge from "deepmerge";
 import { useMemo } from "react";
 
-const httpLink = new HttpLink({
+const httpLink = new BatchHttpLink({
   uri: process.env.NEXT_PUBLIC_GRAPHQL_URI,
+  batchMax: 5,
+  batchInterval: 20,
   fetch,
 });
 
