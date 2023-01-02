@@ -1,9 +1,0 @@
-mutation token($input: TokenInput!) {
-  token(input: $input) {
-    accessToken
-    expiresIn
-    idToken
-    scope
-    tokenType
-  }
-}
