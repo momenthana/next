@@ -41,10 +41,13 @@
     "graphql-let": "^0.18.6",
     "graphql-scalars": "^1.20.1",
     "graphql-tag": "^2.12.6",
+    "hana.js": "^0.2.0",
+    "mongoose": "^6.8.2",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4",
+    "uuid-mongodb": "^2.5.3",
     "zustand": "^4.1.5"
   },
   "devDependencies": {
