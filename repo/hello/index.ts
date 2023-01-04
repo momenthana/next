@@ -1,4 +1,4 @@
-import { HelloDocument, HelloQuery, HelloQueryVariables } from '@/lib/gql/queries/hello.gql'
+// import { HelloDocument, HelloQuery, HelloQueryVariables } from '@/lib/gql/queries/hello.gql'
 import { createLazyQuery } from '@/utils/createQuery'
 import { useEffect, useMemo } from 'react'
 import create from 'zustand'
@@ -10,9 +10,9 @@ import { Queries } from './type'
  * Dynamic Queries
  */
 export const dynamicQueries = {
-  helloLazyQuery: createLazyQuery<HelloQuery, HelloQueryVariables>(HelloDocument, (helloLazyQueryResult) => {
-    helloRepo.setState({ helloLazyQueryResult })
-  }),
+  // helloLazyQuery: createLazyQuery<HelloQuery, HelloQueryVariables>(HelloDocument, (helloLazyQueryResult) => {
+  //   helloRepo.setState({ helloLazyQueryResult })
+  // }),
 }
 
 /**

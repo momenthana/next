@@ -4,6 +4,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next'
 import resolvers from '@/lib/graphql/resolvers'
 import typeDefs from '@/lib/graphql/typeDefs'
 import { NextApiRequest, NextApiResponse } from 'next'
+import Hana from 'hana.js'
 
 type Context = { req: NextApiRequest; res: NextApiResponse }
 
@@ -18,13 +19,13 @@ export default startServerAndCreateNextHandler<Context>(server, {
       const { operationName }: any = req.body;
 
       if (operationName === "IntrospectionQuery") {
-        if (env.NODE_ENV !== "production") return { req, res }
+        if (process.env.NODE_ENV !== "production") return { req, res }
 
         if (req.headers.authorization == null) throw new Error();
 
         const authorization = req.headers.authorization.split(" ");
 
-        if (authorization[1] !== env.TOKEN) throw new Error();
+        if (authorization[1] !== process.env.TOKEN) throw new Error();
       }
 
       if (req.headers.authorization == null) return { req, res }
