@@ -1,13 +1,12 @@
 import { mergeTypeDefs } from "@graphql-tools/merge";
 import { typeDefs as scalarTypeDefs } from "graphql-scalars";
 
-import createApp from "./mutations/createApp/typeDef.graphql";
-import token from './mutations/token/typeDef.graphql'
-import app from "./queries/app/typeDef.graphql";
+import createHello from "./mutations/createHello/typeDef.graphql";
+import hello from "./queries/hello/typeDef.graphql";
 
-const mutationTypeDefs = [createApp, token];
+const mutationTypeDefs = [createHello];
 
-const queryTypeDefs = [app];
+const queryTypeDefs = [hello];
 
 export default mergeTypeDefs([
   ...scalarTypeDefs,

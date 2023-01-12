@@ -1,17 +1,15 @@
 import { resolvers as scalarResolvers } from 'graphql-scalars'
 
-import { createApp } from './mutations/createApp'
-import { token } from './mutations/token'
-import { app } from './queries/app'
+import { createHello } from './mutations/createHello'
+import { hello } from './queries/hello'
 
 const resolvers = {
   ...scalarResolvers,
   Mutation: {
-    createApp,
-    token,
+    createHello,
   },
   Query: {
-    app,
+    hello,
   },
 }
 
